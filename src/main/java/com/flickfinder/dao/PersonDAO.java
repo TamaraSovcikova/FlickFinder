@@ -63,4 +63,25 @@ public class PersonDAO {
 		return null;
 
 	}
+	
+	public List<Person> getPeopleByMovieId(int movieId) throws SQLException {
+		List<Person> people = new ArrayList<>();
+		
+		String query = """
+		    SELECT people.id, people.name, people.birth 
+		    FROM stars 
+		    JOIN people ON stars.person_id = people.id 
+		    WHERE stars.movie_id = ?
+		""";
+
+		PreparedStatement ps = connection.prepareStatement(query);
+		ps.setInt(1, movieId);
+		ResultSet rs = ps.executeQuery();
+		
+		while (rs.next()) {
+			people.add(new Person(rs.getInt("id"), rs.getString("name"), rs.getInt("birth")));
+		}
+
+		return people;
+	}
 }

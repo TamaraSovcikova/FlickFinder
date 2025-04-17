@@ -3,7 +3,9 @@ package com.flickfinder.controller;
 import java.sql.SQLException;
 
 import com.flickfinder.dao.MovieDAO;
+import com.flickfinder.dao.PersonDAO;
 import com.flickfinder.model.Movie;
+import com.flickfinder.model.Person;
 
 import io.javalin.http.Context;
 
@@ -31,12 +33,14 @@ public class MovieController {
 	 */
 
 	private final MovieDAO movieDAO;
+	private final PersonDAO personDAO;
 
 	/**
 	 * Constructs a MovieController object and initializes the movieDAO.
 	 */
-	public MovieController(MovieDAO movieDAO) {
+	public MovieController(MovieDAO movieDAO, PersonDAO personDAO) {
 		this.movieDAO = movieDAO;
+		this.personDAO = personDAO;
 	}
 
 	/**
@@ -76,5 +80,20 @@ public class MovieController {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void getPeopleByMovieId(Context ctx) {
+		int movieId = Integer.parseInt(ctx.pathParam("id"));
+		try {			
+			Movie movie = movieDAO.getMovieById(movieId);
+			if (movie == null) {
+				ctx.status(404);
+				ctx.result("Movie not found");
+				return;
+			}
+			ctx.json(personDAO.getPeopleByMovieId(movieId));
+		} catch (SQLException e) {
+			ctx.status(500).result("Database error");
+			e.printStackTrace();
+		}
+	}
 }

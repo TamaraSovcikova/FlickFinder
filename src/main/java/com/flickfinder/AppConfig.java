@@ -34,10 +34,11 @@ public class AppConfig {
 
 		// Set up controllers
 		MovieDAO movieDao = new MovieDAO();
-		MovieController movieController = new MovieController(movieDao);
+		PersonDAO personDao = new PersonDAO();
+		MovieController movieController = new MovieController(movieDao,personDao);
 
 		 //Uncomment the following lines as you progress through the assessment
-		 PersonDAO personDao = new PersonDAO();
+		
 		 PersonController personController = new PersonController(personDao);
 
 		/**
@@ -52,11 +53,11 @@ public class AppConfig {
 		// app.get("/movies/ratings/{year}", movieController::getRatingsByYear);
 		app.get("/movies", movieController::getAllMovies);
 		app.get("/movies/{id}", movieController::getMovieById);
-		// app.get("/movies/{id}/stars", movieController::getPeopleByMovieId);
+		app.get("/movies/{id}/stars", movieController::getPeopleByMovieId);
 
 		 app.get("/people", personController::getAllPeople);
 		 app.get("/people/{id}", personController::getPersonById);
-		// app.get("/people/{id}/movies", personController::getMoviesStarringPerson);
+		 //app.get("/people/{id}/movies", personController::getMoviesStarringPerson);
 
 		return app;
 
