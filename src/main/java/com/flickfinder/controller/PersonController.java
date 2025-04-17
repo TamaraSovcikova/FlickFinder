@@ -18,9 +18,11 @@ public class PersonController {
 	// the must have requirements before you start these.  
 
 	private final PersonDAO personDAO;
+	private final MovieDAO movieDAO;
 
-	public PersonController(PersonDAO personDAO) {
+	public PersonController(PersonDAO personDAO,MovieDAO movieDAO) {
 		this.personDAO = personDAO;
+		this.movieDAO = movieDAO;
 	}
 
 	public void getAllPeople(Context ctx) {
@@ -50,4 +52,14 @@ public class PersonController {
 			e.printStackTrace();
 		}
 }
+	
+	public void getMoviesStarringPerson(Context ctx) {
+		int personId = Integer.parseInt(ctx.pathParam("id"));
+		try {			
+			ctx.json(movieDAO.getMoviesStarringPerson(personId));
+		} catch (SQLException e) {
+			ctx.status(500).result("Database error");
+			e.printStackTrace();
+		}
+	}
 }

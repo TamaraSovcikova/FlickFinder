@@ -39,7 +39,7 @@ public class AppConfig {
 
 		 //Uncomment the following lines as you progress through the assessment
 		
-		 PersonController personController = new PersonController(personDao);
+		 PersonController personController = new PersonController(personDao, movieDao);
 
 		/**
 		 * Below are the routes for the application.
@@ -57,7 +57,7 @@ public class AppConfig {
 
 		 app.get("/people", personController::getAllPeople);
 		 app.get("/people/{id}", personController::getPersonById);
-		 //app.get("/people/{id}/movies", personController::getMoviesStarringPerson);
+		 app.get("/people/{id}/movies", personController::getMoviesStarringPerson);
 
 		return app;
 

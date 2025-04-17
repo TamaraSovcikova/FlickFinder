@@ -80,4 +80,25 @@ public class MovieDAO {
 		return null;
 
 	}
+	
+	public List<Movie> getMoviesStarringPerson(int personId) throws SQLException {
+		List<Movie> movies = new ArrayList<>();
+
+		String sql = """
+			SELECT movies.id, movies.title, movies.year
+			FROM movies
+			INNER JOIN stars ON movies.id = stars.movie_id
+			WHERE stars.person_id = ?
+		""";
+
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setInt(1, personId);
+		ResultSet rs = ps.executeQuery();
+
+		while (rs.next()) {
+			movies.add(new Movie(rs.getInt("id"), rs.getString("title"), rs.getInt("year")));
+		}
+
+		return movies;
+	}
 }
