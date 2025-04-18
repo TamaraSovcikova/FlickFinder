@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.flickfinder.model.Movie;
+import com.flickfinder.model.MovieRating;
 import com.flickfinder.util.Database;
 
 /**
@@ -102,5 +103,30 @@ public class MovieDAO {
 		}
 
 		return movies;
+	}
+	
+	public List<MovieRating> getRatingsByYear(int year, int limit, int votes) throws SQLException {
+		List<MovieRating> movieRatings = new ArrayList<>();
+
+		String statement = "SELECT m.id, m.title, r.rating, r.votes, m.year " +
+                 "FROM ratings r " +
+                 "JOIN movies m ON r.movie_id = m.id " +
+                 "WHERE m.year = ? " +
+                 "AND r.votes >= ? " +
+                 "ORDER BY r.rating DESC " +
+                 "LIMIT ?";
+
+		PreparedStatement ps = connection.prepareStatement(statement);
+		ps.setInt(1, year);
+	    ps.setInt(2, votes);
+	    ps.setInt(3, limit);
+
+		ResultSet rs = ps.executeQuery();
+		
+		while (rs.next()) {
+			movieRatings.add(new MovieRating(rs.getInt("id"), rs.getString("title"), rs.getInt("year"),  rs.getInt("rating"), rs.getInt("votes")));
+		}
+
+		return movieRatings;
 	}
 }
