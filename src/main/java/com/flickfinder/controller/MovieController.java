@@ -49,8 +49,20 @@ public class MovieController {
 	 * @param ctx the Javalin context
 	 */
 	public void getAllMovies(Context ctx) {
+		int limit = 50;
 		try {
-			ctx.json(movieDAO.getAllMovies());
+			String limitParam = ctx.queryParam("limit");
+			if (limitParam != null) {
+			limit = Integer.parseInt(limitParam);
+				if (limit <= 0) {
+					ctx.status(400).result("Limit can't be a negative number");
+					return;
+				}
+			}
+			ctx.json(movieDAO.getAllMovies(limit));
+		}
+		catch (NumberFormatException e) {
+			ctx.status(400).result("Invalid limit format");		
 		} catch (SQLException e) {
 			ctx.status(500);
 			ctx.result("Database error");
