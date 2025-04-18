@@ -26,9 +26,22 @@ public class PersonController {
 	}
 
 	public void getAllPeople(Context ctx) {
+		int limit = 50;
 		try {
-			ctx.json(personDAO.getAllPeople());
-		} catch (SQLException e) {
+			String limitParam = ctx.queryParam("limit");
+			if (limitParam != null) {
+			limit = Integer.parseInt(limitParam);
+				if (limit <= 0) {
+					ctx.status(400).result("Limit can't be a negative number");
+					return;
+				}
+			}
+			ctx.json(personDAO.getAllPeople(limit));
+		}
+		catch (NumberFormatException e) {
+			ctx.status(400).result("Invalid limit format");		
+		}
+		catch (SQLException e) {
 			ctx.status(500);
 			ctx.result("Database error");
 			e.printStackTrace();
