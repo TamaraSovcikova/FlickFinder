@@ -5,11 +5,15 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.flickfinder.dao.MovieDAO;
+import com.flickfinder.dao.PersonDAO;
+import com.flickfinder.model.Movie;
+import com.flickfinder.model.Person;
 
 import io.javalin.http.Context;
 
@@ -24,7 +28,6 @@ class MovieControllerTest {
 	 * The context object, later we will mock it.
 	 */
 	private Context ctx;
-
 	/**
 	 * The movie data access object.
 	 */
@@ -34,17 +37,21 @@ class MovieControllerTest {
 	 * The movie controller.
 	 */
 
+	private PersonDAO personDAO;
+
+	
 	private MovieController movieController;
 
 	@BeforeEach
 	void setUp() {
 		// We create a mock of the MovieDAO class.
 		movieDAO = mock(MovieDAO.class);
+		personDAO = mock(PersonDAO.class);
 		// We create a mock of the Context class.
 		ctx = mock(Context.class);
 
 		// We create an instance of the MovieController class and pass the mock object
-		movieController = new MovieController(movieDAO, null);
+		movieController = new MovieController(movieDAO, personDAO);
 	}
 
 	/**
@@ -119,6 +126,17 @@ class MovieControllerTest {
 		when(movieDAO.getMovieById(1)).thenReturn(null);
 		movieController.getMovieById(ctx);
 		verify(ctx).status(404);
+	}
+	
+	@Test
+	void testGetPeopleByMovieId() {
+	    when(ctx.pathParam("id")).thenReturn("1");
+	    movieController.getPeopleByMovieId(ctx);
+	    try {
+	        verify(personDAO).getPeopleByMovieId(1);
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
 	}
 
 }

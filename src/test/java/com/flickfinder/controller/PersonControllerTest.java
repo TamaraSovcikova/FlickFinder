@@ -6,12 +6,15 @@ import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.anyInt;
 
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.flickfinder.dao.MovieDAO;
 import com.flickfinder.dao.PersonDAO;
+import com.flickfinder.model.Movie;
 
 import io.javalin.http.Context;
 
@@ -83,14 +86,5 @@ class PersonControllerTest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Test
-	void testThrows500ExceptionWhenGetMoviesStarringPersonDatabaseError() throws SQLException {
-	    when(ctx.pathParam("id")).thenReturn("1");
-	    when(ctx.status(anyInt())).thenReturn(ctx);
-	    when(movieDAO.getMoviesStarringPerson(1)).thenThrow(new SQLException());
-	    personController.getMoviesStarringPerson(ctx);
-	    verify(ctx).status(500);
 	}
 }

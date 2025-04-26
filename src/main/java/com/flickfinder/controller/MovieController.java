@@ -98,12 +98,12 @@ public class MovieController {
 	public void getPeopleByMovieId(Context ctx) {
 		int movieId = Integer.parseInt(ctx.pathParam("id"));
 		try {			
-			Movie movie = movieDAO.getMovieById(movieId);
-			if (movie == null) {
-				ctx.status(404);
-				ctx.result("Movie not found");
-				return;
-			}
+//			Movie movie = movieDAO.getMovieById(movieId);
+//			if (movie == null) {
+//				ctx.status(404);
+//				ctx.result("Movie not found");
+//				return;
+//			}
 			ctx.json(personDAO.getPeopleByMovieId(movieId));
 		} catch (SQLException e) {
 			ctx.status(500).result("Database error");

@@ -98,7 +98,31 @@ class IntegrationTests {
 				.body("id", equalTo(1))
 				.body("name", equalTo("Tim Robbins"));
 	}
+	
+	@Test
+	void retrieves_stars_of_movie_by_id() {
+	    given()
+	        .when()
+	        .get(baseURL + "/movies/1/stars")
+	        .then()
+	        .assertThat()
+	        .statusCode(200)
+	        .body("[0].name", equalTo("Tim Robbins"))
+	        .body("[1].name", equalTo("Morgan Freeman"));
+	}
 
+	void retrieves_movies_of_person_by_id() {
+	    given()
+	        .when()
+	        .get(baseURL + "/people/1/movies")
+	        .then()
+	        .assertThat()
+	        .statusCode(200)
+	        .body("[0].title", equalTo("The Shawshank Redemption"))
+	        .body("[1].title", equalTo("The Godfather"))
+	        .body("[2].title", equalTo("The Dark Knight"));
+	}
+	
 	/**
 	 * Tears down the application after each test.
 	 * We want to make sure that each test runs in isolation.
