@@ -11,20 +11,20 @@
 
  **Justin Stewart - Data Analyst at a Marketing Agency**
 
-Justin Stewart is a 42-year-old data analyst in Bristol, currently working at a mid-sized marketing agency. With a background in public health research and a degree in Statistics, he transitioned into marketing analytics and now focuses on uncovering trends and building dashboards for campaign strategies. He regularly works with tools like Python, Power BI, and public APIs, and values platforms that are fast, accurate, and easy to integrate. Justin's main goal is to quickly access clean, structured data for trend analysis and reporting. He gets frustrated with slow tools and fragmented data sources that require manual cleaning, putting efficiency as top prioty to meet tight dealines.
+Justin Stewart is a 42-year-old data analyst in Bristol, currently working at a mid-sized marketing agency. With a background in public health research and a degree in Statistics, he transitioned into marketing analytics and now focuses on uncovering trends and building dashboards for campaign strategies. He regularly works with tools like Python, Power BI, and public APIs, and values platforms that are fast, accurate, and easy to integrate. Justin's main goal is to quickly access clean, structured data for trend analysis and reporting. He gets frustrated with slow tools and fragmented data sources that demand manual cleaning, making efficiency his top priority to meet tight deadlines.
 
 ### Persona 2
 
 **Amira Khan - Film Studies Student**
 
-Amira Khan, 22, is a second-year Film and Screen Studies student at the University of Brighton. After completing a degree in English Literature, she transitioned to film studies to explore how directors' unique storytelling techniques shape their films. Her goal is to excel in writing insightful research papers that analyze directors' techniques and storytelling methods. Amira is skilled at critical thinking and film analysis, often comparing directors' styles and identifying patterns. She spends significant time researching films, gathering data on directors, and reading reviews to support her assignments. However, she finds it difficult to gather reliable, structured data from various sources, especially when researching lesser-known films. She needs a tool that allows her to quickly access detailed and accurate film data, saving her time on research so she can focus on analysis and writing. 
+Amira Khan, 22, is a second-year Film and Screen Studies student at the University of Brighton. After completing a degree in English Literature, she switched to film studies to better understand how directors use different techniques to shape their films. Outside of her studies, she enjoys creative writing, visiting independent cinemas, and taking part in local film discussion groups, where she often finds new ideas and inspiration. She aims to develop strong research papers that break down directors' storytelling styles, using her critical thinking to spot patterns and connections. Most of her time goes into digging through films, director profiles, and reviews to build strong arguments for her work. However, she finds it difficult to gather reliable, structured data from various sources, especially when researching lesser-known films. She needs a tool that can give her quick access to accurate film data, helping her save time on research so she can focus more on her analysis and writing.
 
 ## 1.2 Scenario
 
 **Using FlickFinder to Steamline Actor Popularity Analysis**
 It's a Tuesday morning, and Justin is getting started with his usual routine at the marketing agency's analytics desk. A new campaign brief has come in from a film distributor client. They want to target the 80s and 90s nostalgia trend by finding out which actors from that era are becoming popular again. Justin's job is to identify these actors and their recent film appearances.
 
-At first, Justin tries to gather the data from various sources, like film databases, spreadsheets, and web searches. However, the process is slow and frustrating. He finds himself spending hours looking for details about each actor's filmography, release dates, genres, directors, and performance metrics over time. When he tracks down a new film, he has to cross-reference everything manually, and the data is often incomplete or outdated. It becomes a huge time sink, and after a while, Justin feels overwhelmed.
+At first, Justin tries to gather the data from various sources, like film databases, spreadsheets, and web searches. However, the process is slow and frustrating. He spends hours digging through scattered information on actors' filmographies, release dates, genres, directors, and performance stats, often cross-referencing outdated or incomplete data. Over time, the constant searching becomes overwhelming and drains his energy.
 
 After talking to a colleague about his frustration, Justin is recommended FlickFinder. The tool promises to make the process faster and more efficient. Curious, Justin decides to give it a try.
 
@@ -32,7 +32,7 @@ He opens FlickFinder and quickly notices how easy it is to use. He can search fo
 
 With FlickFinder, Justin no longer has to spend hours searching and cross-referencing data. He exports the results into a Python script to track how often an actor appears in films over time. When he sees that one actor has had a noticeable increase in roles from 2019 to 2023, he adds additional performance metrics from other sources and builds a Power BI dashboard for the campaign team.
 
-By lunchtime, Justin has all the data he needs. He has analyzed it, built the report, and is ready to present it to the client. The team is excited about the insights, and Justin feels a sense of relief. FlickFinder didn't just save him hours; it made the whole process easier and more reliable. While the tool didn’t provide every piece of the data he needed, it gave him a solid foundation that allowed him to focus on the more valuable analysis.
+By lunchtime, Justin has all the data he needs. He has analyzed it, built the report, and is ready to present it to the client. FlickFinder didn't just save him hours; it made the whole process easier and more reliable.
 
 ## 1.3 User Stories
 
@@ -85,9 +85,9 @@ If I were to improve the project, security would be my main focus. I would explo
 
 ### 2.2 Professional Aspects
 
-The Model-View-Controller (MVC) architecture in FlickFinder is key to organizing the app’s structure. By separating concerns across layers, it supports scalability, refactoring, and documentation, essential as the app develops for mobile. This approach, along with consistent naming conventions, input validation, and good coding practices, ensures maintainability, reduces duplicate logic, and prevents 'spaghetti code,' making it easier to debug, extend, and scale. As the app evolves, these practices also help optimize performance, add new features, and maintain a consistent user experience across devices.
+The Model-View-Controller architecture in FlickFinder was a great choice for organizing the app's structure. By separating concerns across layers, it supports scalability, refactoring, and documentation, essential as the app develops for mobile. This approach, along with consistent naming conventions, input validation, and good coding practices, ensures maintainability, reduces duplicate logic, and prevents 'spaghetti code,' making it easier to debug, extend, and scale. As the app evolves, these practices also help optimize performance, add new features, and maintain a consistent user experience across devices.
 
-Looking ahead, FlickFinder must adhere to the UK Data Protection Act 2018 and UK GDPR. As features like user accounts and personalized recommendations are introduced, maintaining transparency in data collection and usage will be vital. The system should give users control over their data while ensuring its secure storage and use. Additionally, ethical design practices must ensure that recommendations remain fair, unbiased, and free from harmful content
+Looking ahead, FlickFinder must adhere to the UK Data Protection Act 2018 and UK GDPR. As features like user accounts and personalized recommendations are introduced, maintaining transparency in data collection and usage will be vital. The system should give users control over their data while ensuring its secure storage and use. Additionally, ethical design practices must ensure that recommendations remain fair, unbiased, and free from harmful content.
 
 In terms of accessibility, meeting WCAG 2.2 standards will ensure that the application is usable by all users, including those with disabilities. Adding features such as dark mode and progressive content loading would not only improve the user experience but also reduce energy consumption, benefiting users and their devices.
 
@@ -96,5 +96,6 @@ Lastly, making sustainable deployment choices, such as transitioning to a cloud-
 
 ## 3. References
 
-[use a know referencing style, for example APA, Harvard, etc.]
-include the presentation slides + the brief and such
+Appleton, J. (2025). Systems modelling [Lecture slides]. University of Surrey.
+
+Newman, A., & Winks, O. (2025). Software's role in sustainability [PowerPoint slides]. Presented as part of the 10th lecture in Computer Science Software Engineering by Appleton, J., University of Surrey.
