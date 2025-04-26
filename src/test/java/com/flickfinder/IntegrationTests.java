@@ -105,12 +105,13 @@ class IntegrationTests {
 	        .when()
 	        .get(baseURL + "/movies/1/stars")
 	        .then()
-	        .assertThat()
+	        .assertThat()	
 	        .statusCode(200)
 	        .body("[0].name", equalTo("Tim Robbins"))
 	        .body("[1].name", equalTo("Morgan Freeman"));
 	}
-
+	
+	@Test
 	void retrieves_movies_of_person_by_id() {
 	    given()
 	        .when()
@@ -118,9 +119,86 @@ class IntegrationTests {
 	        .then()
 	        .assertThat()
 	        .statusCode(200)
-	        .body("[0].title", equalTo("The Shawshank Redemption"))
-	        .body("[1].title", equalTo("The Godfather"))
-	        .body("[2].title", equalTo("The Dark Knight"));
+	        .body("size()", equalTo(1))
+	        .body("[0].title", equalTo("The Shawshank Redemption"));
+	}
+	
+	@Test
+	void retrieves_movies_with_default_limit() {
+	    given()
+	        .when()
+	        .get(baseURL + "/movies")
+	        .then()
+	        .assertThat()
+	        .statusCode(200)
+	        .body("size()", equalTo(5));
+	}
+
+	@Test
+	void retrieves_movies_with_custom_limit() {
+	    given()
+	        .when()
+	        .get(baseURL + "/movies?limit=2")
+	        .then()
+	        .assertThat()	 
+	        .statusCode(200)
+	        .body("size()", equalTo(2));
+	}
+
+	@Test
+	void retrieves_people_with_default_limit() {
+	    given()
+	        .when()
+	        .get(baseURL + "/people")
+	        .then()
+	        .assertThat()
+	        .statusCode(200)
+	        .body("size()", equalTo(5));
+	}
+
+	@Test
+	void retrieves_people_with_custom_limit() {
+	    given()
+	        .when()
+	        .get(baseURL + "/people?limit=2")
+	        .then()
+	        .assertThat()
+	        .statusCode(200)
+	        .body("size()", equalTo(2));
+	}
+	
+	@Test
+	void retrieves_ratings_for_year_with_default_settings() {
+	    given()
+	        .when()
+	        .get(baseURL + "/movies/ratings/1994")
+	        .then()
+	        .assertThat()
+	        .statusCode(200)
+	        .body("[0].rating", equalTo(9.0f))
+	        .body("[0].votes", equalTo(2200000));
+	}
+
+	@Test
+	void retrieves_ratings_for_year_with_custom_limit() {
+	    given()
+	        .when()
+	        .get(baseURL + "/movies/ratings/1994?limit=1")
+	        .then()
+	        .assertThat()
+	        .statusCode(200)
+	        .body("size()", equalTo(1));
+	}
+
+	@Test
+	void retrieves_ratings_for_year_with_custom_votes_threshold() {
+	    given()
+	        .when()
+	        .get(baseURL + "/movies/ratings/1994?votes=500")
+	        .then()
+	        .assertThat()
+	        .statusCode(200)
+	        .body("[0].votes", equalTo(2200000));
 	}
 	
 	/**

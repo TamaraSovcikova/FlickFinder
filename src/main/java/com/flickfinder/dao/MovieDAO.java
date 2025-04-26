@@ -74,12 +74,10 @@ public class MovieDAO {
 		ResultSet rs = ps.executeQuery();
 
 		if (rs.next()) {
-
 			return new Movie(rs.getInt("id"), rs.getString("title"), rs.getInt("year"));
 		}
 		
 		// return null if the id does not return a movie.
-
 		return null;
 
 	}

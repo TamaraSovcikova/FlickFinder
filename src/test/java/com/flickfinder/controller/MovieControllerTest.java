@@ -1,6 +1,7 @@
 package com.flickfinder.controller;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -138,5 +139,16 @@ class MovieControllerTest {
 	        e.printStackTrace();
 	    }
 	}
-
+	
+	@Test
+	void testGetRatingsByYear() throws SQLException {
+	    when(ctx.pathParam("year")).thenReturn("1957");	
+	    movieController.getRatingsByYear(ctx);
+	    try {
+	    	 verify(movieDAO).getRatingsByYear(1957, 50, 1000);
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	   
+	}
 }

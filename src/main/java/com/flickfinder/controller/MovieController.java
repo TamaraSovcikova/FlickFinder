@@ -78,32 +78,25 @@ public class MovieController {
 	 * @param ctx the Javalin context
 	 */
 	public void getMovieById(Context ctx) {
-
-		int id = Integer.parseInt(ctx.pathParam("id"));
-		try {
-			Movie movie = movieDAO.getMovieById(id);
-			if (movie == null) {
-				ctx.status(404);
-				ctx.result("Movie not found");
-				return;
-			}
-			ctx.json(movieDAO.getMovieById(id));
-		} catch (SQLException e) {
-			ctx.status(500);
-			ctx.result("Database error");
-			e.printStackTrace();
-		}
+	    int id = Integer.parseInt(ctx.pathParam("id"));
+	    try {
+	        Movie movie = movieDAO.getMovieById(id);
+	        if (movie == null) {
+	            ctx.status(404);
+	            ctx.result("Movie not found");
+	            return;
+	        }
+	        ctx.json(movie);
+	    } catch (SQLException e) {
+	        ctx.status(500);
+	        ctx.result("Database error");
+	        e.printStackTrace();
+	    }
 	}
 	
 	public void getPeopleByMovieId(Context ctx) {
 		int movieId = Integer.parseInt(ctx.pathParam("id"));
 		try {			
-//			Movie movie = movieDAO.getMovieById(movieId);
-//			if (movie == null) {
-//				ctx.status(404);
-//				ctx.result("Movie not found");
-//				return;
-//			}
 			ctx.json(personDAO.getPeopleByMovieId(movieId));
 		} catch (SQLException e) {
 			ctx.status(500).result("Database error");
@@ -134,12 +127,11 @@ public class MovieController {
 				}
 			}
 
-			List<MovieRating> movies = movieDAO.getRatingsByYear(year, limit, votes);
-			if (movies.isEmpty()) {
-				ctx.status(404).result("No movies found for year " + year);
-				return;
-			}
-
+			List<MovieRating> movies = movieDAO.getRatingsByYear(year, limit, votes);			
+//			if (movies.isEmpty()) {
+//			    ctx.status(404).result("No movies found for year " + year);
+//			    return;
+//			}			
 			ctx.json(movies);
 		}
 		catch (NumberFormatException e) {

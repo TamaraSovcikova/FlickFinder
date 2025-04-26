@@ -1,6 +1,7 @@
 package com.flickfinder.dao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.sql.SQLException;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.flickfinder.model.Movie;
+import com.flickfinder.model.MovieRating;
 import com.flickfinder.util.Database;
 import com.flickfinder.util.Seeder;
 
@@ -97,6 +99,41 @@ class MovieDAOTest {
 		}
 
 	}
+	
+	@Test
+    void testGetMoviesStarringPerson() {
+        try {
+            int personId = 1;
+            List<Movie> movies = movieDAO.getMoviesStarringPerson(personId);
+            assertTrue(movies.size() == 1);
+            assertEquals("The Shawshank Redemption", movies.get(0).getTitle());     
+            
+        } catch (SQLException e) {
+            fail("SQLException thrown");
+            e.printStackTrace();
+        }
+    }
+	
+	@Test
+    void testGetRatingsByYear() {
+        try {      
+            List<MovieRating> movieRatings = movieDAO.getRatingsByYear(1994, 3, 1000);  
+
+            // Ensure the movies returned are in the correct year (1994).
+            for (MovieRating rating : movieRatings) {
+                assertEquals(1994, rating.getYear());
+            }
+
+            // Ensure the ratings are ordered by the highest rating.
+            for (int i = 1; i < movieRatings.size(); i++) {
+                assertTrue(movieRatings.get(i - 1).getRating() >= movieRatings.get(i).getRating());
+            }
+
+        } catch (SQLException e) {
+            fail("SQLException thrown");
+            e.printStackTrace();
+        }
+    }
 
 	@AfterEach
 	void tearDown() {
