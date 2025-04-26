@@ -44,7 +44,7 @@ class MovieControllerTest {
 		ctx = mock(Context.class);
 
 		// We create an instance of the MovieController class and pass the mock object
-		movieController = new MovieController(movieDAO);
+		movieController = new MovieController(movieDAO, null);
 	}
 
 	/**
@@ -56,7 +56,7 @@ class MovieControllerTest {
 	void testGetAllMovies() {
 		movieController.getAllMovies(ctx);
 		try {
-			verify(movieDAO).getAllMovies();
+			verify(movieDAO).getAllMovies(50);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -70,7 +70,7 @@ class MovieControllerTest {
 	 */
 	@Test
 	void testThrows500ExceptionWhenGetAllDatabaseError() throws SQLException {
-		when(movieDAO.getAllMovies()).thenThrow(new SQLException());
+		when(movieDAO.getAllMovies(50)).thenThrow(new SQLException());
 		movieController.getAllMovies(ctx);
 		verify(ctx).status(500);
 	}

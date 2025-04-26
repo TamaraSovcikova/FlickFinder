@@ -11,7 +11,7 @@
 
  **Justin Stewart - Data Analyst at a Marketing Agency**
 
-Justin Stewart is a 42-year-old data analyst in Bristol, currently working at a mid-sized marketing agency. With a background in public health research and a degree in Statistics, he transitioned into marketing analytics and now focuses on uncovering trends and building dashboards for campaign strategies. He regularly works with tools like Python, Power BI, and public APIs, and values platforms that are fast, accurate, and easy to integrate. Justin's main goal is to quickly access clean, structured data for trend analysis and reporting. He gets frustrated with slow tools and fragmented data sources that require manual cleaning. Efficiency and reliability are key to his work, as he often faces tight deadlines and needs tools that fit seamlessly into his workflow.
+Justin Stewart is a 42-year-old data analyst in Bristol, currently working at a mid-sized marketing agency. With a background in public health research and a degree in Statistics, he transitioned into marketing analytics and now focuses on uncovering trends and building dashboards for campaign strategies. He regularly works with tools like Python, Power BI, and public APIs, and values platforms that are fast, accurate, and easy to integrate. Justin's main goal is to quickly access clean, structured data for trend analysis and reporting. He gets frustrated with slow tools and fragmented data sources that require manual cleaning, putting efficiency as top prioty to meet tight dealines.
 
 ### Persona 2
 

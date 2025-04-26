@@ -12,18 +12,7 @@ import com.flickfinder.model.Movie;
 import com.flickfinder.model.Person;
 import com.flickfinder.util.Database;
 
-/**
- * TODO: Implement this class
- * 
- */
 public class PersonDAO {
-
-	// for the must have requirements, you will need to implement the following
-	// methods:
-	// - getAllPeople()
-	// - getPersonById(int id)
-	// you will add further methods for the more advanced tasks; however, ensure your have completed 
-	// the must have requirements before you start these.  
 
 	private final Connection connection;
 
@@ -60,7 +49,6 @@ public class PersonDAO {
 		}
 		
 		// return null if the id does not return a movie.
-
 		return null;
 
 	}

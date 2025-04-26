@@ -58,7 +58,7 @@ class MovieDAOTest {
 	@Test
 	void testGetAllMovies() {
 		try {
-			List<Movie> movies = movieDAO.getAllMovies();
+			List<Movie> movies = movieDAO.getAllMovies(5);
 			assertEquals(5, movies.size());
 		} catch (SQLException e) {
 			fail("SQLException thrown");
@@ -88,7 +88,6 @@ class MovieDAOTest {
 	@Test
 	void testGetMovieByIdInvalidId() {
 		// write an assertThrows for a SQLException
-
 		try {
 			Movie movie = movieDAO.getMovieById(1000);
 			assertEquals(null, movie);

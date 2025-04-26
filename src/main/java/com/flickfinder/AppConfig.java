@@ -32,14 +32,11 @@ public class AppConfig {
 			config.staticFiles.add("/public", Location.CLASSPATH);
 		}).start(port);
 
-		// Set up controllers
 		MovieDAO movieDao = new MovieDAO();
 		PersonDAO personDao = new PersonDAO();
 		MovieController movieController = new MovieController(movieDao,personDao);
-
-		 //Uncomment the following lines as you progress through the assessment
 		
-		 PersonController personController = new PersonController(personDao, movieDao);
+		PersonController personController = new PersonController(personDao, movieDao);
 
 		/**
 		 * Below are the routes for the application.
