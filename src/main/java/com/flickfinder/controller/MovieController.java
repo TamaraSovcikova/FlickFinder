@@ -127,11 +127,7 @@ public class MovieController {
 				}
 			}
 
-			List<MovieRating> movies = movieDAO.getRatingsByYear(year, limit, votes);			
-//			if (movies.isEmpty()) {
-//			    ctx.status(404).result("No movies found for year " + year);
-//			    return;
-//			}			
+			List<MovieRating> movies = movieDAO.getRatingsByYear(year, limit, votes);					
 			ctx.json(movies);
 		}
 		catch (NumberFormatException e) {

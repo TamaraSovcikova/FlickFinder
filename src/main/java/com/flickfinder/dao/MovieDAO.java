@@ -76,10 +76,7 @@ public class MovieDAO {
 		if (rs.next()) {
 			return new Movie(rs.getInt("id"), rs.getString("title"), rs.getInt("year"));
 		}
-		
-		// return null if the id does not return a movie.
 		return null;
-
 	}
 	
 	public List<Movie> getMoviesStarringPerson(int personId) throws SQLException {

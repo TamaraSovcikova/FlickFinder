@@ -1,6 +1,8 @@
 package com.flickfinder.model;
 
-
+/**
+ * A Movie Rating in the movie database.
+ */
 public class MovieRating extends Movie {
 
 	private int rating;
