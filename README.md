@@ -1,55 +1,46 @@
-## COM1028 Software Engineering - FlickFinder
+# FlickFinder: Movie Search Application
 
-This is the starting project for the COM1028 Software Engineering module. This project is a simple application that provides a RESTful API for accessing a movie database. The database is a simple SQLite database that contains information about movies, people, and their relationships.
+[![Java](https://img.shields.io/badge/java-17-orange)](https://www.oracle.com/java/)  
+[![Javalin](https://img.shields.io/badge/javalin-5.8-blue)](https://javalin.io/)  
+[![SQLite](https://img.shields.io/badge/sqlite-3.43-blue)](https://www.sqlite.org/)  
 
-The badge below indicates if your submission compiled correctly. It may take some time to update. You can click the badge to see the jobs page and failure traces. You must ensure your project compiles correctly.
+FlickFinder is a back-end focused movie search application that allows users to query movies and people (actors/directors) from a SQLite database.  
+This project was originally developed as part of a university coursework, with a REST API exposing movie data and supporting flexible queries.
 
-[![Pipeline status](https://gitlab.surrey.ac.uk/csee/com1028/2024-25/com1028ts01658/badges/main/pipeline.svg)](https://gitlab.surrey.ac.uk/csee/com1028/2024-25/com1028ts01658/-/jobs/)
+---
 
-## Dependencies
+### Features
 
-Overall, we have the following dependencies in our project:
+- Retrieve a list of movies (limitable)  
+- Retrieve movie details by ID  
+- Retrieve all people in the database (actors, directors)  
+- Retrieve person details by ID  
+- Retrieve stars of a specific movie  
+- Retrieve movies starring a specific person  
+- Filter movies by year, rating, and minimum number of votes  
+- RESTful API built using Java & Javalin  
+- SQLite database with 400k+ movies and 1.2M+ people
 
-- [sqllite-jdbc](https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc) - SQLite JDBC Driver
-- [javalin](https://javalin.io/) - A simple web framework for Java
-- [junit](https://junit.org/junit5/) - JUnit for unit testing
-- [mockito](https://site.mockito.org/) - Mockito for mocking objects in unit tests
-- [rest-assured](https://rest-assured.io/) - Testing and validating our APIs
+---
 
-These dependencies are managed by Maven, and you can find them in the [pom.xml](pom.xml) file.
+### Tech Stack
+
+- **Java 17** — application logic and API  
+- **Javalin 5.x** — lightweight REST framework  
+- **SQLite 3** — database containing movie and people data  
+- **JUnit 5** — unit and integration testing  
+- **MVC Pattern** — separation of concerns (models, controllers, routes)  
+
+---
 
 ## Database
+The database is a simple SQLite database that contains information about movies, people, and their relationships:
+<img src="./docs/ERD.png" alt="Database ERD" width="600">
 
-### Development Database
 
-The database is a simple SQLite database that contains information about movies, people, and their relationships. The database is structured as follows:
+---
 
-![Database](./docs/ERD.png)
+### License
 
-You've been given the IMDB movies database to work with. It is a simple database and you will only need to interact with it in a read only manner; you will not be adding data or modifying the database.
-
-You can find the database in the [src/main/resources](src/main/resources) folder. The database is called `movies.db`. You should not modify this database in any way. However, it won't be there until you run the project for the first time. I am using the com.googlecode.maven-download-plugin to pull the database in from a remote location. This is defined in the [pom.xml](pom.xml) file. It should be pulled when you run the project for the first time.
-
-### Testing Database
-
-Although the development database is simple, it has a lot of data. This can make testing difficult. For testing we use a in-memory database. This database is created and populated with data before each test and destroyed after each test. This code can be found in [src/test/java/com/flickfinder/util/Seeder.java](src/test/java/com/flickfinder/util/Seeder.java).
-
-## Getting Started
-
-1. Clone the repository: `git clone <repository address>`
-2. Open the project in your favourite IDE (IntelliJ, Eclipse, etc.). While you can use any IDE, these instructions will assume you are using Eclipse. The project is a Maven project; as such, the process should be similar in other IDEs.
-3. In Eclipse, got to File -> Open Projects from File System... and select the root directory of the project.
-
-![Open Project](./docs/open_project.png)
-
-4. In the package explorer, right click on the project and select Run As -> Maven Install. This will download all the dependencies and build the project, including the database.
-
-![Maven Install](./docs/maven_install.png)
-
-5. If all has gone well, you should see a message in the console saying "BUILD SUCCESS". If you see this, you are ready to run the project. Ignore, any warnings or errors about JRE System Library.
-
-![Build Success](./docs/build_success.png)
-
-6. To run the project, right click on the project in the package explorer and locate `src/main/java/com/flickfinder/Main.java`, right click on this file and select Run As -> Java Application.
-
-7. Open a browser. Ideally one with JSON rendering capabilities (e.g.Firefox or Chrome with a JSON extension). In the address bar, type `http://localhost:8000`. If all has gone well, you should see the API documentation.
+© 2026 Tamara Sovcikova. All rights reserved.
+Public for portfolio purposes only; do not modify or redistribute.
